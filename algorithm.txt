@@ -1,0 +1,97 @@
+TODO:
+
+1. Load images of digits to array of matrices (size=10): 
+
+    font = "arial";
+    for i = 0 .. 9:
+        img_dig[i] = im2double(rgb2gray(imread(
+                     "img/" + font +"_"+ str(i))));
+
+
+2. Create projectors on digits from 0 to 9:
+
+    for i = 0 .. 9:
+        projector_dig[i] = MCreateProjector(MCreateMosaicShape(
+                            img_dig[i], "grayscale"));
+
+
+3. Fill the matrix (10x10) of digits' projections on each other:
+
+    for i = 0..9: // images
+        for j = 0.. 9: // projectors
+            // projection of i image on j shape
+            projection[i, j] = MProjection(projector_dig[j], 
+                                    img_dig[i]);
+
+
+4. Create projector on constant field of vision
+
+    // constant field with same size as img_dig[i]
+    chi_x = zeros(img_dig[0]); 
+    v0 = MCreateMosaicShape(chi_x, "grayscale");
+    e = MCreateProjector(v0);
+
+
+5. Create projections of digits' on constant field vision:
+
+    for i = 0..9: 
+        projection_on_v0[i] = MProjection(e, img_dig[i]);
+
+
+6. Carry out experiments TIMES(=30) times
+for images with Gauss noise with mean=0, std=1..MAX_STD(=100) (normal distribution)
+    
+    noisy_dig -- array of noisy digits
+    
+    // for each digit and different distribution stds 
+    accuracy = zeros(10x100); 
+    
+    mean = 0;
+    
+    
+    for idx = 0 .. 9: // images
+        for std = 1 .. MAX_STD:
+            for t = 0 .. TIMES-1:    
+                // Making noisy digit
+                for y = 0 .. size_y-1: // rows of pixels
+                    for x = 0 .. size_x-1: 
+                        noise = normal_distr_rand(mean, std);
+                        noisy_dig[idx, y, x] = img_dig[idx, y, x] + noise;
+        
+                        if noisy_dig[idx, y, x] < 0:
+                            noisy_dig[idx, y, x] = 0;
+                        elif noisy_dig[idx, y, x] > 255:
+                            noisy_dig[idx, y, x] = 255;
+                
+                // Finding the closest original digit
+                min_val = 1e100;
+                closest = -666;
+                
+                for kdx = 0..9:
+                    g = noisy_dig[idx];
+                    pg = MProjection(projector_dig[kdx], g);
+                    eg = MProjection(e, g);
+                    
+                    val = norm( (g - pg)(:) ).^2 / norm( pg-eg ).^2
+                    
+                    if val < min_val or kdx == 0:
+                        min_val = val;
+                        closest = kdx;
+                        
+                // Updating statistics
+                if closest == idx:
+                    accuracy[idx, std] += 1;
+    
+    accuracy /= (1.0*TIMES);
+    
+
+7. Save accuracy to txt files
+accuracy_dig_0.txt
+...
+accuracy_dig_9.txt
+
+for i = 0..9:
+    fname = "accuracy_dig" + str(i)
+    fprintfMat(fname, accuracy[i], "%5.2f");
+
+
