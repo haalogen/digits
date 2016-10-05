@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="index" text="MorIARTy">
+<tocitem target="section_21d7f3d726bbff787a9f3b0e9d42ded4" text="MorIARTy">
+<tocitem target="MCreateMosaicShape" text="MCreateMosaicShape"/>
+<tocitem target="MCreateProjector" text="MCreateProjector"/>
+<tocitem target="MProjection" text="MProjection"/>
+<tocitem target="MorIARTyPath" text="MorIARTyPath"/>
+</tocitem>
+</tocitem>
+</toc>

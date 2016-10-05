@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from MCreateProjector.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="MCreateProjector" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>MCreateProjector</refname>
+    <refpurpose>Create the projector onto the given shape.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   projector = MCreateProjector(shape)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>shape:</term>
+      <listitem><para> Structure representing the shape (typically created using the function like <link linkend="MCreateMosaicShape">MCreateMosaicShape()</link>).</para></listitem></varlistentry>
+   <varlistentry><term>projector:</term>
+      <listitem><para> Structure representing the created projector.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+<link linkend="MCreateProjector">MCreateProjector()</link> creates a structure
+representing the projector onto the given shape.
+That structure is supposed to be supplied as an argument to
+<link linkend="MProjection">MProjection()</link> and some other MorIARTy functions.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// Read an image
+imgfile = fullpath(MorIARTyPath() + "/images/cube/cube-1.png");
+cube = im2double(rgb2gray(imread(imgfile)));
+
+// Create the image shape
+shape = MCreateMosaicShape(cube, "grayscale");
+
+// Create the projector onto the shape
+projector = MCreateProjector(shape);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="MCreateMosaicShape">MCreateMosaicShape</link></member>
+   <member><link linkend="MProjection">MProjection</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Andrey Zubyuk</member>
+   </simplelist>
+</refsection>
+</refentry>

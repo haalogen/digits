@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY a7e7e47b5fccdcef16faf0bb0ea91a866 SYSTEM "/home/stan/projects/scilab_morph/MorIARTy-toolbox/help/en_US/MCreateMosaicShape.xml">
+<!ENTITY a195efd20f71fba8240e6abfe1df30383 SYSTEM "/home/stan/projects/scilab_morph/MorIARTy-toolbox/help/en_US/MCreateProjector.xml">
+<!ENTITY af64729261cda4bc05aac097f7f9bdc49 SYSTEM "/home/stan/projects/scilab_morph/MorIARTy-toolbox/help/en_US/MProjection.xml">
+<!ENTITY a19514f4767d8c048105cb31e2c63fb9b SYSTEM "/home/stan/projects/scilab_morph/MorIARTy-toolbox/help/en_US/MorIARTyPath.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="en_US"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='moriarty_manual'>
+    <title>MorIARTy</title>
+  </info>
+
+<part xml:id='section_21d7f3d726bbff787a9f3b0e9d42ded4'>
+<title>MorIARTy</title>
+&a7e7e47b5fccdcef16faf0bb0ea91a866;
+&a195efd20f71fba8240e6abfe1df30383;
+&af64729261cda4bc05aac097f7f9bdc49;
+&a19514f4767d8c048105cb31e2c63fb9b;
+</part>
+</book>

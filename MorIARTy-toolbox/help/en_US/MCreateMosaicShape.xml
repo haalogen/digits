@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from MCreateMosaicShape.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="MCreateMosaicShape" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>MCreateMosaicShape</refname>
+    <refpurpose>Create the shape of the given mosaic image (or signal of another type).</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   shape = MCreateMosaicShape(data, data_type)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>data:</term>
+      <listitem><para> Image (or signal of another type) which shape needs to be created.</para></listitem></varlistentry>
+   <varlistentry><term>data_type:</term>
+      <listitem><para> Text string specifying input data type. Only "grayscale" is now implemented.</para></listitem></varlistentry>
+   <varlistentry><term>shape:</term>
+      <listitem><para> Structure representing the created shape.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+<link linkend="MCreateMosaicShape">MCreateMosaicShape()</link> creates a structure
+representing the shape of the given image (or signal of another type).
+That structure is supposed to be supplied as an argument to
+<link linkend="MCreateProjector">MCreateProjector()</link> and some other MorIARTy functions.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// Read an image
+imgfile = fullpath(MorIARTyPath() + "/images/cube/cube-1.png");
+cube = im2double(rgb2gray(imread(imgfile)));
+
+// Create the image shape
+shape = MCreateMosaicShape(cube, "grayscale");
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="MCreateProjector">MCreateProjector</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Andrey Zubyuk</member>
+   </simplelist>
+</refsection>
+</refentry>
