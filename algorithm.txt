@@ -1,4 +1,7 @@
-TODO:
+// Attention! 7 Oct 2016
+// Algorithm is not relevant anymore, watch code in 
+// digits.sce
+
 
 1. Load images of digits to array of matrices (size=10): 
 
@@ -93,5 +96,4 @@ accuracy_dig_9.txt
 for i = 0..9:
     fname = "accuracy_dig" + str(i)
     fprintfMat(fname, accuracy[i], "%5.2f");
-
 
