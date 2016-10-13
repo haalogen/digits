@@ -66,14 +66,15 @@ end
 
 //6. Carry out experiments TIMES(=33) times
 //for images with Gauss noise with mean=0, std=1..MAX_STD(=2) (normal distribution)
-TIMES = 30;
+TIMES = 1;
 av = 0;
 HEIGHT = 45;
 WIDTH = 30;
 MAX_STD = 10;
-stds = linspace(0.1, MAX_STD, 20);
-STD_LEN = length(stds);
+STD_LEN = 20;
+stds = linspace(0.1, MAX_STD, STD_LEN);
 accuracy = zeros(10, STD_LEN);
+write_to_file = %F;
 
 
 for idx = 1:10
@@ -87,10 +88,15 @@ for idx = 1:10
 //            disp( size(noise) )
 //            imshow(noise)
             noisy_dig(:,:, idx) = img_dig(:, :, idx) + noise; // array of noisy digits
- 	    
-	    if ind_std == 4 & idx == 1 then        
-	            imshow((noisy_dig(:,:, idx) - min(noisy_dig(:,:, idx)))/max(noisy_dig(:,:, idx))); 
-	    end
+            // normalising noisy image: [a, b] -> [0, 1]
+            min_v = min(noisy_dig(:,:, idx));
+            max_v = max(noisy_dig(:,:, idx));
+            noisy_dig(:,:, idx) = (noisy_dig(:,:, idx) - min_v) / max_v;
+            if ind_std == 4  & t == 1 then      
+              imshow(noisy_dig(:,:, idx));
+              tmp = input("Enter smth");
+              
+            end
             errors = zeros(10);
         
             g = noisy_dig(:,:, idx);
@@ -131,6 +137,8 @@ accuracy = accuracy / (1.0*TIMES);
 //cols -- standard deviations: 0.1 .. MAX_STD
 
 fname = "accuracy_dig_maxsd" + string(MAX_STD) + "_t" + string(TIMES);
-fprintfMat(fname+".dat", accuracy, "%5.2f");
+if write_to_file then
+  fprintfMat(fname+".dat", accuracy, "%5.2f");
+end
 
 
