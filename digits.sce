@@ -70,14 +70,14 @@ TIMES = 30;
 av = 0;
 HEIGHT = 45;
 WIDTH = 30;
-MAX_STD = 2;
-stds = linspace(0.1, 2, 20);
+MAX_STD = 10;
+stds = linspace(0.1, MAX_STD, 20);
 STD_LEN = length(stds);
 accuracy = zeros(10, STD_LEN);
 
 
 for idx = 1:10
-    mprintf("\ndigit: %d \n", idx);
+    mprintf("\ndigit: %d \n", idx-1);
     for ind_std = 1:STD_LEN
         std = stds(ind_std);
         mprintf("std: %f \t", std);
@@ -128,7 +128,7 @@ accuracy = accuracy / (1.0*TIMES);
 //rows -- digits: 0..9
 //cols -- standard deviations: 0.1 .. MAX_STD
 
-fname = "accuracy_dig_sd" + string(STD_LEN) + "_t" + string(TIMES);
+fname = "accuracy_dig_maxsd" + string(MAX_STD) + "_t" + string(TIMES);
 fprintfMat(fname+".dat", accuracy, "%5.2f");
 
 
