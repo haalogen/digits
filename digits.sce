@@ -87,8 +87,10 @@ for idx = 1:10
 //            disp( size(noise) )
 //            imshow(noise)
             noisy_dig(:,:, idx) = img_dig(:, :, idx) + noise; // array of noisy digits
-        
-//        imshow(noisy_dig(:,:, idx)) 
+ 	    
+	    if ind_std == 4 & idx == 1 then        
+	            imshow((noisy_dig(:,:, idx) - min(noisy_dig(:,:, idx)))/max(noisy_dig(:,:, idx))); 
+	    end
             errors = zeros(10);
         
             g = noisy_dig(:,:, idx);
